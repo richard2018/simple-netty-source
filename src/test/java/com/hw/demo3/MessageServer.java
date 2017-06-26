@@ -22,12 +22,14 @@ public class MessageServer {
 
     public static void main(String args[]) {
         // Server服务启动器
+        // 设置channelFactory
         ServerBootstrap bootstrap = new ServerBootstrap(
                 new NioServerSocketChannelFactory(
                         Executors.newCachedThreadPool(),
                         Executors.newCachedThreadPool()));
 
         // 设置一个处理客户端消息和各种消息事件的类(Handler)
+        // 设置PipelineFactory
         bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
             @Override
             public ChannelPipeline getPipeline() throws Exception {
